@@ -1,5 +1,3 @@
-// "use strict";
-
 // function toString() {
 //   return `${this.name} ${this.sname}`;
 // }
@@ -32,31 +30,33 @@
 // console.log(student.read());
 // console.log(man.eat());
 
-//-----------------------------------//
+//----------переписываем-----------------//
 
-"use strict";
+function StudentPrototype() {
+  this.toString = function () {
+    return `${this.name} ${this.sname}`;
+  };
+  this.eat = function () {
+    return this.name + "is eating";
+  };
+  this.read = function () {
+    return this.name + "is reading";
+  }
+}
 
-const rabbit = {
-  countPaw: 4,
-  jump: function () {
-    return "i\'m jumping";
-  },
+function Student(name, sname, age) {
+  if (!new.target) {
+    return new Student(name, sname, age);
+  }
+  this.name = name;
+  this.sname = sname;
+  this.age = age;
 };
+Student.prototype = new StudentPrototype();
 
-const rabbitPet = {
-  name:'Boba',
-  pet: function () {
-    return 'pet' + this.name;
-  },
-};
+const student = new Student("Elon", "Musk", 50);
 
-const rabbitMagic = {
-  say: function (Hello) {
-    return "word";
-  },
-};
-
-rabbitPet.__proto__ = rabbit;
-rabbitMagic.__proto__ = rabbitPet;
-
-
+console.log(student);
+console.log(student.toString());
+// console.log(student.read());
+// console.log(student.eat());
