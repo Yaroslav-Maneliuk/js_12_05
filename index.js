@@ -1,3 +1,4 @@
+"use strict";
 // function toString() {
 //   return `${this.name} ${this.sname}`;
 // }
@@ -32,31 +33,58 @@
 
 //----------переписываем-----------------//
 
-function StudentPrototype() {
-  this.toString = function () {
-    return `${this.name} ${this.sname}`;
-  };
-  this.eat = function () {
-    return this.name + "is eating";
-  };
-  this.read = function () {
-    return this.name + "is reading";
-  }
-}
+// function StudentPrototype() {
+//   this.toString = function () {
+//     return `${this.name} ${this.sname}`;
+//   };
+//   this.eat = function () {
+//     return this.name + "is eating";
+//   };
+//   this.read = function () {
+//     return this.name + "is reading";
+//   }
+// }
 
-function Student(name, sname, age) {
-  if (!new.target) {
-    return new Student(name, sname, age);
-  }
-  this.name = name;
-  this.sname = sname;
-  this.age = age;
-};
-Student.prototype = new StudentPrototype();
+// function Student(name, sname, age) {
+//   if (!new.target) {
+//     return new Student(name, sname, age);
+//   }
+//   this.name = name;
+//   this.sname = sname;
+//   this.age = age;
+// };
+// Student.prototype = new StudentPrototype();
 
-const student = new Student("Elon", "Musk", 50);
+// const student = new Student("Elon", "Musk", 50);
 
-console.log(student);
-console.log(student.toString());
+// console.log(student);
+// console.log(student.toString());
 // console.log(student.read());
 // console.log(student.eat());
+
+//----------------------------------------//
+
+//свойства
+function Ladder() {
+  this.step = 0;
+}
+
+function LadderProto() {
+  this.showStep = function () {
+    return this.step;
+  };
+  this.up = function () {
+    this.step--;
+    return this;
+  };
+  this.down = function () {
+    this.step--;
+    return this;
+  };
+}
+
+Ladder.prototype = new LadderProto();
+
+const stairs = new Ladder();
+console.log(stairs.showStep());
+console.log(stairs.up().up().up());
