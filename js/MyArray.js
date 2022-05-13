@@ -21,6 +21,11 @@ function MyArrayProptotype() {
     //this.length;
     return lastItem;
   };
+  this.forEach = function(callback){
+    for (let i = 0; index < this.length; i++) {
+      callback(this[i]);
+    }
+  }
 }
 //конструктор объекта с данными
 function MyArray() {
@@ -31,27 +36,7 @@ function MyArray() {
 }
 
 MyArray.prototype = new MyArrayProptotype();
-MyArray.prototype.qqq = function () {
-  console.log("newParent");
-};
 
-const myArray1 = new MyArray(1, 2, 3, 8, 5);
-myArray1.qqq();
-// console.log(myArray1.prototype);
-const myArray2 = new MyArray();
-console.log(myArray1.length);
-//console.log(myArray1.push(8,5,9));
-console.log(myArray1);
-console.log(myArray1.push === myArray2.push);
-
-const array1 = new Array(1, 2, 3, 5);
-// const array2 = new Array();
-console.log(array1);
-// console.log(array1.push(8));
-// console.log(array1 === array2);
-// console.log(array1.push === array2.push);
-
-Array.prototype.qqq = function () {
-  console.log("newParent");
-};
-array1.qqq();
+const myArray1 = new MyArray(1, 2, 3, 8, 5);  //length = 5
+const myArray2 = new MyArray("a", "b");  //length = 2  
+const myArray3 = new MyArray();  //length = 0
