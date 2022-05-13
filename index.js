@@ -1,90 +1,78 @@
 "use strict";
-// function toString() {
-//   return `${this.name} ${this.sname}`;
-// }
 
-// const animal = {
-//   name: "anonimous",
-//   eat: function () {
-//     return this.name + "is eating";
-//   },
-// };
-// const man = {
-//   countFingers: 5,
-//   name: "human",
-//   read: function () {
-//     return this.name + "is reading";
-//   },
-// };
-// const student = {
-//   id: 1,
-//   name: "Elon",
-//   sname: "Musk",
-//   age: 50,
-//   toString,
-// };
-
-// man.__proto__ = animal;
-// student.__proto__ = man;
-
-// console.log(student);
-// console.log(student.read());
-// console.log(man.eat());
-
-//----------переписываем-----------------//
-
-// function StudentPrototype() {
-//   this.toString = function () {
-//     return `${this.name} ${this.sname}`;
-//   };
-//   this.eat = function () {
-//     return this.name + "is eating";
-//   };
-//   this.read = function () {
-//     return this.name + "is reading";
-//   }
-// }
-
-// function Student(name, sname, age) {
-//   if (!new.target) {
-//     return new Student(name, sname, age);
-//   }
-//   this.name = name;
-//   this.sname = sname;
-//   this.age = age;
-// };
-// Student.prototype = new StudentPrototype();
-
-// const student = new Student("Elon", "Musk", 50);
-
-// console.log(student);
-// console.log(student.toString());
-// console.log(student.read());
-// console.log(student.eat());
-
-//----------------------------------------//
-
-//свойства
-function Ladder() {
-  this.step = 0;
+function User(fname, sname, age, isMale, email, isSubscribing = false) {
+  this.fname = fname;
+  this.sname = sname;
+  this.age = age;
+  this.isMale = isMale;
+  this.email = email;
+  this.isSubscribing = isSubscribing;
 }
 
-function LadderProto() {
-  this.showStep = function () {
-    return this.step;
-  };
-  this.up = function () {
-    this.step--;
-    return this;
-  };
-  this.down = function () {
-    this.step--;
-    return this;
+function UserPrototype() {
+  this.getFullName = function () {
+    return `${this.fname} ${this.sname}`;
   };
 }
 
-Ladder.prototype = new LadderProto();
+User.prototype = new UserPrototype();
 
-const stairs = new Ladder();
-console.log(stairs.showStep());
-console.log(stairs.up().up().up());
+const createRandomUsers = function (amount = 1) {
+  const db = [];
+  for (let i = 0; i < amount; i++) {
+    const user = new User(
+      `Name${i}`,
+      `Sname${i}`,
+      Math.floor(Math.random() * (80 - 20)) + 20,
+      Math.random() > 0.5,
+      `email${i}@gmail.com`
+    );
+    db.push(user);
+  }
+  return db;
+};
+
+const users = createRandomUsers(15);
+console.table(users);
+
+/* получить массив полных имен пользователей, используя метод map*/
+
+const newUsers = users.map(function (user) {
+  return user.getFullName();
+});
+console.table(users);
+
+/* получить массив пользователей, старше 65, используя filter*/
+
+const newOldUsers = users.filter(function (user) {
+  return user.age > OLD_AGE;
+});
+console.table(newOldUsers);
+
+/* получить массив female, используя filter*/
+
+const newFemaleUsers = users.filter(function (user) {
+  return user.isMale === false;
+});
+console.table(newFemaleUsers);
+
+/* зарандомить подписку у пользователя, используя forEach*/
+
+users.forEach(function (user) {
+  user.isSubscribing = Math.random() > 0.5;
+});
+console.table(users);
+
+/* получить массив бабушек с подпиской*/
+
+const oldFemaleUsersWithSubscribing = users
+  .filter(function (user) {
+    return user.isMale ===false;
+  })
+  .filter(function (user) {
+    return user.age > OLD_AGE;
+  })
+  .filter(function (user) {
+    return user.isSubscribing;
+  });
+console.table(oldFemaleUsersWithSubscribing);
