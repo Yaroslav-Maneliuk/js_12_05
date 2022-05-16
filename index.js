@@ -1,18 +1,13 @@
 "use strict";
 
-const site = {
-  title: "Green site",
-  headers: ["Title 1", "About us", "Portfolio"],
-  showHeaders() {
-    // console.log(this);
-    this.headers.forEach((header)=> {
-      console.log(header, '|' ,this.title);
-      const test = ()=>{
-        console.log(this);
-      }
-      test();
-    });
-  }
+const sum = (n1, n2) => {
+  return n1 + n2;
 };
 
-site.showHeaders();
+const sum2 = (n1, n2) => n1 + n2;
+
+console.log(sum(1, 2));
+console.log(sum2(1, 2));
+
+const square = (n=2) => n * n;
+console.log(square());
