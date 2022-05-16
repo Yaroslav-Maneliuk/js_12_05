@@ -1,13 +1,20 @@
 "use strict";
 
-const sum = (n1, n2) => {
-  return n1 + n2;
+const f1 = function (n1,...rest) {
+  // console.log(arguments);
+  console.log(n1);
+  console.log(rest);
 };
 
-const sum2 = (n1, n2) => n1 + n2;
+const f2 = (n1,...rest) => {
+  // console.log(arguments);
+  console.log(n1);
+  console.log(rest);
+};
 
-console.log(sum(1, 2));
-console.log(sum2(1, 2));
 
-const square = (n=2) => n * n;
-console.log(square());
+f1(1,2,3);
+f2(4,8,9);
+
+// console.dir(f1);
+// console.dir(f2);
