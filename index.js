@@ -31,8 +31,8 @@ const space = ' ';
 console.log(splitString(tempestString, space));
 */
 //----------------NIKITA -var----------------------//
-
-function stringToUpper(string) {
+/*
+function stringToJaden(string) {
   return string
     .split(" ")
     .map(function (element) {
@@ -40,6 +40,18 @@ function stringToUpper(string) {
     })
     .join(" ");
 }
-console.log(stringToUpper("tO be OR Not TO bE"));
-
+console.log(stringToJaden("tO be OR Not TO bE"));
+*/
 //----------------OLENA-var----------------------//
+
+function stringToJaden(string, separator = ' ') {
+  return string
+    .split(" ")
+    .map(function (element) {
+      return element[0].toUpperCase() + element.substring(1).toLowerCase();
+    })
+    .join(" ");
+}
+console.log(stringToJaden("tO be OR Not TO bE"));
+
+//----------------HW-var----------------------//
