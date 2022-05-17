@@ -1,12 +1,12 @@
 "use strict";
 
-const check = new Boolean(false);
-console.log(check);
+const num = new Number(10);
+console.log(num);
 
-const str = "";
+const num2 = Number(123.123123.toFixed(2));
+console.log(num2);
 
-if (Boolean(str)) {
-  console.log("yes");
-} else {
-  console.log("no");
-}
+
+let number = 50.2561;
+number = Number(number.toFixed(2))
+console.log(number);
