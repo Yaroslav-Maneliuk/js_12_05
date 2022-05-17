@@ -1,21 +1,12 @@
-"use strict"
+"use strict";
 
-// const getMaxFromTwoNumber = (n1, n1) => {
-//   return n1 > n2 ? n1 : n2;
-// };
+const check = new Boolean(false);
+console.log(check);
 
-const getMaxFromTwoNumber = (n1, n1) => n1 > n2 ? n1 : n2;
+const str = "";
 
-const showArgs = (a, b, ...c) => {
-  console.log(c)
-  c.forEach((item)=>{
-    console.log(item)
-  })
-};
-showArgs(1,2,3,4,5);
-
-const obj = {
-  prop:12,
-  showArgs,
+if (Boolean(str)) {
+  console.log("yes");
+} else {
+  console.log("no");
 }
-obj.showArgs(1,1,1,1);
