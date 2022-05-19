@@ -14,9 +14,16 @@ class User {
   }
 }
 
-const userNew = new User("Tim", "Le", 50);
-const userNew2 = new User("Tom", "Bom", 50);
+const userNew = new User("Tim", "Le", -5);
+const userNew2 = new User("Tom", "Bom", 250);
 console.log(userNew);
+
+
+
+
+
+
+
 
 class Woker {
   constructor(name, sname, rate, days) {
@@ -25,9 +32,22 @@ class Woker {
     this.rate = rate;
     this.days = days;
   }
+  get days() {
+    return this._days;
+  }
+  set days(days) {
+    if (typeof days !== "number") {
+      throw new TypeError("value must be number");
+    }
+    if (days < 0 || days > MAX_DAYS) {
+      throw new RangeError("range must be: 0 ... ${MAX_AGE}");
+    }
+    this._days = days;
+  }
   getSalary() {
     return this.rate * this.days;
   }
 }
+
 const woker = new Woker("Biba", "Bibovich", 500, 15);
 console.log(woker.getSalary());
