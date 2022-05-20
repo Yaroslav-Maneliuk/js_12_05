@@ -6,6 +6,8 @@ function UserOld(name, sname, age) {
   this.age = age;
 }
 
+UserOld.qwerty = 'qwerty';
+UserOld.method = function(){};
 function UserOldPrototype() {
   this.getFullName = function () {
     return `${this.name} ${this.sname}`;

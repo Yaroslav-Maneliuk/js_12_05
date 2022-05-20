@@ -12,6 +12,10 @@ class User {
   isAdult() {
     return this.age >= ADULT_AGE;
   }
+  static qwerty = 'qwerty';
+  static createTestUser(){
+    return new User('Anonim', 'Anonimich', 22)
+  }
 }
 
 const userNew = new User("Tim", "Le", -5);
